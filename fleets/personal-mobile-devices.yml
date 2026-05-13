@@ -17,7 +17,17 @@
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 name: "📱🔐 Personal mobile devices"
+labels:
+  - name: C-Suite
+    description: Hosts belonging to the C-Suite
+    label_membership_type: manual
+    hosts:
 controls:
+  apple_settings:
+    configuration_profiles:
+      - path: ../platforms/ios/configuration-profiles/passcode-settings.json
+        labels_exclude_any:
+          - C-Suite
   setup_experience:
     ###########################################################
     # Uncomment to use single-sign on (SSO) to authenticate
@@ -72,6 +82,9 @@ controls:
 # Apps to make available from the Apple App Store or Google Play
 ###########################################################
 software:
+  packages:
+    - path: ../platforms/windows/software/cloudflare-warp.yml
+      self_service: false
   app_store_apps:
     ###########################################################
     # iOS apps
